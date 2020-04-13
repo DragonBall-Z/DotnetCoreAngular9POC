@@ -28,7 +28,7 @@ namespace WebApi
         {
             services.AddControllers();
             services.AddDbContext<PaymentDetailContext>(options => 
-            options.UseSqlServer(Configuration.GetConnectionString("Dev Connection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
             
 
         }
