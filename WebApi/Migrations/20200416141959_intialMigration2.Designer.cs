@@ -9,8 +9,8 @@ using WebApi.Models;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(PaymentDetailContext))]
-    [Migration("20200413093828_IntialMigration1")]
-    partial class IntialMigration1
+    [Migration("20200416141959_intialMigration2")]
+    partial class intialMigration2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,19 +28,15 @@ namespace WebApi.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CVV")
-                        .IsRequired()
-                        .HasColumnType("varchar(5)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CardNumber")
-                        .IsRequired()
-                        .HasColumnType("varchar(15)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CardQwnerName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<string>("CardOwnerName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ExpirationDate")
-                        .IsRequired()
                         .HasColumnType("varchar(10)");
 
                     b.HasKey("PMId");

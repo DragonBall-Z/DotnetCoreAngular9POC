@@ -2,7 +2,7 @@
 
 namespace WebApi.Migrations
 {
-    public partial class IntialMigration1 : Migration
+    public partial class intialMigration1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace WebApi.Migrations
                 {
                     PMId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CardQwnerName = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    CardOwnerName = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     CardNumber = table.Column<string>(type: "varchar(15)", nullable: false),
                     ExpirationDate = table.Column<string>(type: "varchar(10)", nullable: false),
                     CVV = table.Column<string>(type: "varchar(5)", nullable: false)
