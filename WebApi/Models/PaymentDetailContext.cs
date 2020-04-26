@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Models;
 
 namespace WebApi.Models
 {
@@ -12,6 +13,10 @@ namespace WebApi.Models
         { }
 
         public DbSet<PaymentDetail> PaymentDetails { get; set; }
+
+        public DbSet<WebApi.Models.Employee> Employee { get; set; }
+
+        public DbSet<WebApi.Models.Feedback> Feedback { get; set; }
     }
 
 }
