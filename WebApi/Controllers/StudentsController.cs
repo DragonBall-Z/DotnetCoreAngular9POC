@@ -79,6 +79,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Student>> PostStudent(Student student)
         {
+            student.Id = Guid.NewGuid().ToString();
             _context.Student.Add(student);
             try
             {
