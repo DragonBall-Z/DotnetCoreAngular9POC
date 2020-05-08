@@ -53,17 +53,17 @@
 <h2>Feedback</h2>
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
 Name<input name="Name" #Name="ngModel" 
-             [(ngModel)]="service.Name" 
+             [(ngModel)]="service.formData.Name" 
              class="form-control col-md-3"
             placeholder="Name" required >
 
 Email<input name="Email" #Name="ngModel" 
-             [(ngModel)]="service.Email" 
+             [(ngModel)]="service.formData.Email" 
              class="form-control col-md-3"
             placeholder="Email" required >
 
 Msg<textarea name="Msg" #Name="ngModel" 
-             [(ngModel)]="service.Msg" 
+             [(ngModel)]="service.formData.Msg" 
              class="form-control col-md-3"
             placeholder="msg" required ></textarea>
 <br>

@@ -1,3 +1,5 @@
+import { AddUserComponent } from './add-user/add-user.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
@@ -34,6 +36,11 @@ const routes: Routes = [
   {
     path:'feedback',
   component:FeedbackComponent
+
+  },
+  {
+    path: 'addUser',
+    component: AddUserComponent
 
   }
 

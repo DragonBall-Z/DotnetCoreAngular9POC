@@ -11,6 +11,7 @@ using WebApi.Models;
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
+    [AllowAnonymous]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
