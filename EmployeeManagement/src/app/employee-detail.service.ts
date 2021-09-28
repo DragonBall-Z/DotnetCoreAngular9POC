@@ -22,8 +22,9 @@ export class EmployeeDetailService {
   getEmployees() {
     return this.http.get(`${this.rootURL}/Employee`);
   }
-  postEmployee(emp:Employee) {
-    return this.http.post(this.rootURL + '/Employee', emp);
+  postEmployee(data) {
+    alert("Age="+data.value.Age);
+    return this.http.post(this.rootURL + '/Employee', data);
   }
 
 }

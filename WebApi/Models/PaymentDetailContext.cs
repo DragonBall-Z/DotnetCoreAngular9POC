@@ -17,6 +17,8 @@ namespace WebApi.Models
         public DbSet<WebApi.Models.Employee> Employee { get; set; }
 
         public DbSet<WebApi.Models.Feedback> Feedback { get; set; }
+
+        public DbSet<WebApi.Models.Student> Student { get; set; }
     }
 
 }

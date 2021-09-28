@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,50 +10,49 @@ using WebApi.Models;
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
-    [AllowAnonymous]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class StudentsController : ControllerBase
     {
         private readonly PaymentDetailContext _context;
 
-        public EmployeeController(PaymentDetailContext context)
+        public StudentsController(PaymentDetailContext context)
         {
             _context = context;
         }
 
-        // GET: api/Empoyee
+        // GET: api/Students
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployee()
+        public async Task<ActionResult<IEnumerable<Student>>> GetStudent()
         {
-            return await _context.Employee.ToListAsync();
+            return await _context.Student.ToListAsync();
         }
 
-        // GET: api/Empoyee/5
+        // GET: api/Students/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> GetEmployee(string id)
+        public async Task<ActionResult<Student>> GetStudent(string id)
         {
-            var employee = await _context.Employee.FindAsync(id);
+            var student = await _context.Student.FindAsync(id);
 
-            if (employee == null)
+            if (student == null)
             {
                 return NotFound();
             }
 
-            return employee;
+            return student;
         }
 
-        // PUT: api/Empoyee/5
+        // PUT: api/Students/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(string id, Employee employee)
+        public async Task<IActionResult> PutStudent(string id, Student student)
         {
-            if (id != employee.Id)
+            if (id != student.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(employee).State = EntityState.Modified;
+            _context.Entry(student).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +60,7 @@ namespace WebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployeeExists(id))
+                if (!StudentExists(id))
                 {
                     return NotFound();
                 }
@@ -75,22 +73,21 @@ namespace WebApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Empoyee
+        // POST: api/Students
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        [AllowAnonymous]
-        public async Task<ActionResult<Employee>> PostEmployee([FromBody]Employee employee)
+        public async Task<ActionResult<Student>> PostStudent(Student student)
         {
-            employee.Id = Guid.NewGuid().ToString();
-            _context.Employee.Add(employee);
+            student.Id = Guid.NewGuid().ToString();
+            _context.Student.Add(student);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (EmployeeExists(employee.Id))
+                if (StudentExists(student.Id))
                 {
                     return Conflict();
                 }
@@ -100,28 +97,28 @@ namespace WebApi.Controllers
                 }
             }
 
-            return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
+            return CreatedAtAction("GetStudent", new { id = student.Id }, student);
         }
 
-        // DELETE: api/Empoyee/5
+        // DELETE: api/Students/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Employee>> DeleteEmployee(string id)
+        public async Task<ActionResult<Student>> DeleteStudent(string id)
         {
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee == null)
+            var student = await _context.Student.FindAsync(id);
+            if (student == null)
             {
                 return NotFound();
             }
 
-            _context.Employee.Remove(employee);
+            _context.Student.Remove(student);
             await _context.SaveChangesAsync();
 
-            return employee;
+            return student;
         }
 
-        private bool EmployeeExists(string id)
+        private bool StudentExists(string id)
         {
-            return _context.Employee.Any(e => e.Id == id);
+            return _context.Student.Any(e => e.Id == id);
         }
     }
 }
